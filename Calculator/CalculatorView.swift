@@ -8,10 +8,20 @@
 import SwiftUI
 
 struct CalculatorView: View {
+    
+    
+    let buttonLabels: [[String]] = [
+        ["7", "8", "9", "/"],
+        ["4", "5", "6", "*"],
+        ["1", "2", "3", "-"],
+        ["0", ".", "=", "+"]
+    ]
+    
     var body: some View {
         VStack {
             Display
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            ButtonsView
         }
     }
 }
@@ -25,11 +35,29 @@ extension CalculatorView {
     private var Display : some View{
         Text("0")
             .font(.largeTitle)
-            .frame(maxWidth: .infinity, alignment: .topTrailing)
+            .frame(maxWidth: .infinity,minHeight: 50, alignment: .topTrailing)
             .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 25))
             .background(
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color(.systemGray4))
             )
+    }
+    
+    private var ButtonsView : some View {
+        VStack {
+            ForEach(buttonLabels, id: \.self) { row in
+                HStack {
+                    ForEach(row, id: \.self) { label in
+                        Button {
+                            //action
+                        } label: {
+                            Text(label)
+                        }
+
+                    }
+                }
+            }
+        }
+            
     }
 }
