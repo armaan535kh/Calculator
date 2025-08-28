@@ -11,6 +11,7 @@ struct CalculatorView: View {
     var body: some View {
         VStack {
             Display
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
     }
 }
@@ -24,7 +25,11 @@ extension CalculatorView {
     private var Display : some View{
         Text("0")
             .font(.largeTitle)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topTrailing)
+            .frame(maxWidth: .infinity, alignment: .topTrailing)
             .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 25))
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(.systemGray4))
+            )
     }
 }
