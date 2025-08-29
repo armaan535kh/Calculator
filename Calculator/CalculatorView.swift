@@ -44,20 +44,26 @@ extension CalculatorView {
     }
     
     private var ButtonsView : some View {
-        VStack {
+        VStack(spacing: 12) {
             ForEach(buttonLabels, id: \.self) { row in
-                HStack {
+                HStack(spacing: 12) {
                     ForEach(row, id: \.self) { label in
                         Button {
                             //action
                         } label: {
                             Text(label)
+                                
                         }
+                        .buttonStyle(.borderedProminent)
+                        .font(.title)
+                        .frame(width: 75, height: 50)
 
                     }
                 }
+                .padding(.horizontal, 16)
             }
         }
+        .padding(.vertical,20)
             
     }
 }
