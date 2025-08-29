@@ -11,6 +11,7 @@ struct CalculatorView: View {
     
     
     let buttonLabels: [[String]] = [
+        ["C", "++", "--", "%"],
         ["7", "8", "9", "/"],
         ["4", "5", "6", "*"],
         ["1", "2", "3", "-"],
@@ -24,6 +25,8 @@ struct CalculatorView: View {
             ButtonsView
         }
     }
+    
+    
 }
 
 #Preview {
@@ -54,7 +57,7 @@ extension CalculatorView {
                             Text(label)
                                 
                         }
-                        .buttonStyle(.borderedProminent)
+                        .buttonStyle(.bordered)
                         .font(.title)
                         .frame(width: 75, height: 50)
 
