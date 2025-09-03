@@ -9,6 +9,9 @@ import SwiftUI
 
 struct CalculatorView: View {
     @State private var display = "0"
+    @State private var firstNumber: Double = 0 //Store the first operand
+    @State private var currentOperation: CalculatorButton?
+    @State private var shouldResetDisplay: Bool = false
     
     
     let buttonLabels: [[CalculatorButton]] = [
