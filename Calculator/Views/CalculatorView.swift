@@ -77,18 +77,50 @@ extension CalculatorView {
     private func handleButtonTap(_ button: CalculatorButton) {
         
         if button.isNumber {
-            if display == "0" {
+            if display == "0" || shouldResetDisplay {
                 display = button.displayValue
+                shouldResetDisplay = false // check when to clear the display
             } else {
                 display += button.displayValue
             }
             
         } else if button == .clear {
             display = "0"
+            firstNumber = 0 //It would make the Initial or first number is zero
+            currentOperation = nil // Will clear the operation
         } else if button.isOperation {
-            
+            firstNumber = Double(display) ?? 0 //display is the state variable
+            currentOperation = button
+            shouldResetDisplay = true
         } else if button == .equal {
-            
+            Calculate()
         }
+    }
+    
+    //Second function to create functionality
+    
+    private func Calculate() {
+        guard let operation = currentOperation else { return }
+        
+        let secondNumber = Double(display) ?? 0
+        
+        var result: Double = 0
+        
+        switch operation {
+        case .plus:
+            result = firstNumber + secondNumber
+        default:
+            return
+        }
+        
+        if result == floor(result) {
+            display = String(Int(result))
+        } else {
+            display = String(result)
+        }
+        
+        currentOperation = nil
+        shouldResetDisplay = true
+        
     }
 }
