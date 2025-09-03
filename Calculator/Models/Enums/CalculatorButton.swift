@@ -31,6 +31,7 @@ enum CalculatorButton: String, CaseIterable {
     case divide = "/"
     case equal = "="
     case clear = "C"
+    case decimal = "."
     
     var displayValue: String {
         return self.rawValue
@@ -47,7 +48,7 @@ enum CalculatorButton: String, CaseIterable {
     
     var isOperation: Bool {
         switch self {
-        case .plus, .minus, .multiply, .divide, .equal, .clear, .plusPlus, .minusMinus, .modulo:
+        case .plus, .minus, .multiply, .divide, .equal, .clear, .plusPlus, .minusMinus, .modulo, .decimal:
             return true
         default:
             return false

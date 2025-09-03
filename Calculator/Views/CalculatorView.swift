@@ -8,14 +8,15 @@
 import SwiftUI
 
 struct CalculatorView: View {
+    @State private var display = "0"
     
     
-    let buttonLabels: [[String]] = [
-        ["C", "++", "--", "%"],
-        ["7", "8", "9", "/"],
-        ["4", "5", "6", "*"],
-        ["1", "2", "3", "-"],
-        ["0", ".", "=", "+"]
+    let buttonLabels: [[CalculatorButton]] = [
+        [.plusPlus, .clear, .minusMinus, .modulo],
+        [.seven, .eight, .nine, .divide],
+        [.four, .five, .six, .multiply],
+        [.one, .two, .three, .minus],
+        [.zero, .decimal, .equal, .plus]
     ]
     
     var body: some View {
@@ -36,7 +37,7 @@ struct CalculatorView: View {
 extension CalculatorView {
     
     private var Display : some View{
-        Text("0")
+        Text(display)
             .font(.largeTitle)
             .frame(maxWidth: .infinity,minHeight: 50, alignment: .topTrailing)
             .padding(EdgeInsets(top: 100, leading: 0, bottom: 0, trailing: 25))
@@ -52,9 +53,9 @@ extension CalculatorView {
                 HStack(spacing: 12) {
                     ForEach(row, id: \.self) { label in
                         Button {
-                            //action
+                            handleButtonTap(label)
                         } label: {
-                            Text(label)
+                            Text(label.displayValue)
                                 
                         }
                         .buttonStyle(.bordered)
@@ -68,5 +69,24 @@ extension CalculatorView {
         }
         .padding(.vertical,20)
             
+    }
+    
+    private func handleButtonTap(_ button: CalculatorButton) {
+        
+        if button.isNumber {
+            if display == "0" {
+                display = button.displayValue
+            } else {
+                display += button.displayValue
+            }
+            
+        } else if button == .clear {
+            
+            
+        } else if button.isOperation {
+            
+        } else if button == .equal {
+            
+        }
     }
 }
