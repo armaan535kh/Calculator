@@ -81,8 +81,7 @@ extension CalculatorView {
             }
             
         } else if button == .clear {
-            
-            
+            display = "0"
         } else if button.isOperation {
             
         } else if button == .equal {
