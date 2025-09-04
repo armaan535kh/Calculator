@@ -48,7 +48,7 @@ enum CalculatorButton: String, CaseIterable {
     
     var isOperation: Bool {
         switch self {
-        case .plus, .minus, .multiply, .divide, .equal, .clear, .plusPlus, .minusMinus, .modulo, .decimal:
+        case .plus, .minus, .multiply, .divide, .plusPlus, .minusMinus, .modulo:
             return true
         default:
             return false

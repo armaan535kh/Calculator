@@ -109,6 +109,12 @@ extension CalculatorView {
         switch operation {
         case .plus:
             result = firstNumber + secondNumber
+        case .minus:
+            result = firstNumber - secondNumber
+        case .multiply:
+            result = firstNumber * secondNumber
+        case .divide:
+            result = firstNumber / secondNumber
         default:
             return
         }
